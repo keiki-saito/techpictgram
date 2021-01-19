@@ -8,7 +8,11 @@
         <%= form_with model: @post, class: "upload-images p-0 border-0" do |f| %>
           <div class="form-group row mt-2">
             <div class="col-auto pr-0">
-              <%= image_tag avatar_url(current_user), class: "post-profile-icon" %>
+            <%if current_user.profile_photo.present?%>
+               <%=image_tag current_user.profile_photo.url,class:"post-profile-icon"%>
+            <%else%>
+               <%=image_tag 'l_e_others_501.png',class:"post-profile-icon"%>
+            <%end%>
             </div>
             <div class="col pl-0">
               <%= f.text_field :caption, class: "form-control border-0", placeholder: "キャプションを書く" %>

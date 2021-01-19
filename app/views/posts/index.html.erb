@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-header align-items-center d-flex">
           <%= link_to user_path(post.user), class: "no-text-decoration" do %>
-            <%= image_tag avatar_url(post.user), class: "post-profile-icon" %>
+            <%# <%= image_tag avatar_url(post.user), class: "post-profile-icon" %> 
           <% end %>
           <%= link_to user_path(post.user), class: "black-color no-text-decoration",
             title: post.user.name do %>
@@ -55,7 +55,7 @@
               class: "light-color post-time no-text-decoration" %>
             <hr>
             <div class="row actions" id="comment-form-post-<%= post.id.to_s %>">
-              <%= form_with model: [post, Comment.new], class: "w-100" do |f| %>
+              <%= form_with model: [post, @comment], class: "w-100" do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
                 <%= f.hidden_field :post_id, value: post.id %>
                 <%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント ...", autocomplete: :off %>
